@@ -95,4 +95,4 @@ fruits.toString() // Banana,Orange,Apple,Mango
 
 //valueOf: export the value of an array
 //reference: http://blog.miniasp.com/post/2013/07/11/Front-end-Research-JavaScript-valueOf-method.aspx
-var v = fruits.valueOf() //["Banana", "Orange", "Apple", "Mango"]
+var v = fruits.valueOf() //["Banana", "Orange", "Apple", "Mango"]  
