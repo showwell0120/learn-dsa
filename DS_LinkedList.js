@@ -1,3 +1,5 @@
+//Linked List: is a linear collection of data elements, called nodes, each pointing to the next node by means of a pointer. It is a data structure consisting of a group of nodes which together represent a sequence.
+
 function LinkedList() {
   //node instructor
   const Node = (element)=>{
@@ -58,7 +60,10 @@ function LinkedList() {
   }
 
   //remove an element from the linkedlist
-  this.remove = (element)=>{}
+  this.remove = (element)=>{
+    let index = this.indexOf(element)
+    return this.removeAt(index)
+  }
 
   //remove the element from the linkedlist at the specific position
   this.removeAt = (position)=>{
@@ -88,12 +93,28 @@ function LinkedList() {
 
   //return the index of the element
   this.indexOf = (element)=>{
+      var current = head
+      var index = -1
 
+      while(current) {
+        //iterate the current element
+        if(element === current.element) {
+          return index
+        }
+        index++
+        current = current.next
+      }
+      return -1
   }
 
-  this.isEmpty = ()=>{}
+  this.isEmpty = ()=>{
+    return length === 0
+  }
 
-  this.size = ()=>{}
+  this.size = ()=>{
+    //return the private variable-size
+    return length
+  }
 
   this.toString = ()=>{
     let current = head
@@ -107,10 +128,10 @@ function LinkedList() {
     return string
   }
 
+  this.getHead = ()=>{
+    //return the private variable-head
+    return head
+  }
+
   this.print = ()=>{}
 }
-
-//demo
-const linkedlist = new LinkedList()
-linkedlist.append('Mark')
-linkedlist.append('Jack')
