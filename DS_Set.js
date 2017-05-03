@@ -1,5 +1,5 @@
 //The Set object lets you store unique values of any type, whether primitive values or object references.
-//In ES6, it already provides "Set" constructor. e.g. var mySet = new Set();
+//In ES6, it provides "Set" constructor. e.g. var mySet = new Set();
 
 function Set() {
   //Use object type to let all the keys to be unique
@@ -17,7 +17,9 @@ function Set() {
 
   this.remove = (value)=>{
     if(this.has(value)) {
+      //The delete operator removes a property from an object.
       delete items[value]
+      length--
       return true
     }
     return false
@@ -32,6 +34,7 @@ function Set() {
   }
   this.clear = ()=>{
     items = {}
+    length = 0
   }
   this.size = ()=>{
     // way1: return length
