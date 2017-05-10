@@ -130,7 +130,14 @@ function ArrayList() {
   }
 
   //Quick Sort
-  //Reference:http://www.ruanyifeng.com/blog/2011/04/quicksort_in_javascript.html
+  // Find a “pivot” item in the array. This item is the basis for comparison for a single round.
+  // Start a pointer (the left pointer) at the first item in the array.
+  // Start a pointer (the right pointer) at the last item in the array.
+  // While the value at the left pointer in the array is less than the pivot value, move the left pointer to the right (add 1). Continue until the value at the left pointer is greater than or equal to the pivot value.
+  // While the value at the right pointer in the array is greater than the pivot value, move the right pointer to the left (subtract 1). Continue until the value at the right pointer is less than or equal to the pivot value.
+  // If the left pointer is less than or equal to the right pointer, then swap the values at these locations in the array.
+  // Move the left pointer to the right by one and the right pointer to the left by one.
+  // If the left pointer and right pointer don’t meet, go to step 1.
   this.quickSort = function() {
   	quick(array, 0, array.length - 1)
   };
@@ -166,6 +173,39 @@ function ArrayList() {
   	const tmp = array[index1]
   	array[index1] = array[index2]
   	array[index2] = tmp
+  }
+
+  //Sequential Search
+  this.sequentialSearch = function(item) {
+    for (let i = 0; i < array.length; i++) {
+      if(item === array[i]) {
+        return i
+      }
+    }
+    return -1
+  }
+
+  //Binary Search
+  //Binary search works on sorted arrays. Binary search begins by comparing the middle element of the array with the target value. If the target value matches the middle element, its position in the array is returned.
+  // If the target value is less than or greater than the middle element, the search continues in the lower or upper half of the array, respectively, eliminating the other half from consideration.
+  this.binarySearch = function() {
+    this.quickSort()
+    let low = 0
+    let high = array.length
+    let mid
+    let element
+    while (low <= high) {
+      mid = Math.floor((low + high) / 2)
+      element = array[mid]
+      if(element < item) {
+        low = mid + 1
+      } else if(element > item) {
+        high = mid - 1
+      } else {
+        return mid
+      }
+    }
+    return -1
   }
 }
 
@@ -211,3 +251,13 @@ let array6 = createNonSortedArray(5)
 console.log(array6.toString())
 array6.quickSort()
 console.log(array6.toString())
+
+//sequential search test
+let array7 = createNonSortedArray(10)
+console.log(array7.sequentialSearch(3))
+console.log(array7.sequentialSearch(11))
+
+//binary search test
+let array8 = createNonSortedArray(10)
+console.log(array7.sequentialSearch(3))
+console.log(array7.sequentialSearch(11))
